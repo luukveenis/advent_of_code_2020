@@ -16,9 +16,16 @@ public class Day1 {
         this.input = input;
     }
 
-    public int solve() {
+    public int part1() {
         var inputs = getInputs();
         var subset = findSubsetBySum(inputs, 2, 2020);
+
+        return subset.stream().reduce(1, Math::multiplyExact);
+    }
+
+    public int part2() {
+        var inputs = getInputs();
+        var subset = findSubsetBySum(inputs, 3, 2020);
 
         return subset.stream().reduce(1, Math::multiplyExact);
     }
