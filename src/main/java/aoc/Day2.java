@@ -20,7 +20,7 @@ public class Day2 {
     public int part1() {
        try (Stream<String> passwords = Files.lines(input.toPath())) {
            return passwords
-                   .filter(this::isValid)
+                   .filter(this::isValidPolicy1)
                    .collect(Collectors.toList())
                    .size();
        } catch (IOException e) {
@@ -29,7 +29,19 @@ public class Day2 {
        }
     }
 
-    private boolean isValid(String passwordLine) {
+    public int part2() {
+        try (Stream<String> passwords = Files.lines(input.toPath())) {
+            return passwords
+                    .filter(this::isValidPolicy2)
+                    .collect(Collectors.toList())
+                    .size();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Input file does not exist");
+        }
+    }
+
+    private boolean isValidPolicy1(String passwordLine) {
         var matcher = PASSWORD_PATTERN.matcher(passwordLine);
 
         if (matcher.find()) {
@@ -40,6 +52,27 @@ public class Day2 {
             var occurrences = password.chars().filter(c -> c == character).count();
 
             return occurrences >= min && occurrences <= max;
+        }
+
+        return false;
+    }
+
+    private boolean isValidPolicy2(String passwordLine) {
+        var matcher = PASSWORD_PATTERN.matcher(passwordLine);
+
+        if (matcher.find()) {
+            var min = Integer.parseInt(matcher.group("min")) - 1;
+            var max = Integer.parseInt(matcher.group("max")) - 1;
+            var character = matcher.group("char").charAt(0);
+            var password = matcher.group("password");
+
+            if (password.charAt(min) == character) {
+               return !(password.charAt(max) == character);
+            } else if (password.charAt(max) == character) {
+               return !(password.charAt(min) == character);
+            } else {
+                return false;
+            }
         }
 
         return false;
