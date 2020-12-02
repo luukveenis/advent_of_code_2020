@@ -23,6 +23,6 @@ class Day2Test {
 
     @Test
     public void part1_withTestInput_has2ValidPasswords() {
-        assertEquals(2, day2.part1(), "Solution was incorrect");
+        assertEquals(3, day2.part1(), "Solution was incorrect");
     }
 }

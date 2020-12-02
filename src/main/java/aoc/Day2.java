@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class Day2 {
     private final Pattern PASSWORD_PATTERN = Pattern.compile(
-            "^(?<min>\\d)-(?<max>\\d) (?<char>\\w): (?<password>.*)$"
+            "^(?<min>\\d+)-(?<max>\\d+) (?<char>\\w): (?<password>.*)$"
     );
     private File input;
 
