@@ -3,6 +3,7 @@ package aoc;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,23 +19,24 @@ public class Day2 {
     }
 
     public int part1() {
-       try (Stream<String> passwords = Files.lines(input.toPath())) {
-           return passwords
-                   .filter(this::isValidPolicy1)
-                   .collect(Collectors.toList())
-                   .size();
-       } catch (IOException e) {
-           e.printStackTrace();
-           throw new RuntimeException("Input file does not exist");
-       }
+        return getPasswords()
+                .stream()
+                .filter(this::isValidPolicy1)
+                .collect(Collectors.toList())
+                .size();
     }
 
     public int part2() {
+        return getPasswords()
+                .stream()
+                .filter(this::isValidPolicy2)
+                .collect(Collectors.toList())
+                .size();
+    }
+
+    private List<String> getPasswords() {
         try (Stream<String> passwords = Files.lines(input.toPath())) {
-            return passwords
-                    .filter(this::isValidPolicy2)
-                    .collect(Collectors.toList())
-                    .size();
+            return passwords.collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Input file does not exist");
