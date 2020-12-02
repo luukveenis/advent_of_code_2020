@@ -29,12 +29,16 @@ public class Day1 {
             throw e;
         }
 
-        var match = Sets.combinations(inputs, 2)
-                .stream()
-                .filter(set -> set.stream().mapToInt(Integer::intValue).sum() == 2020)
-                .findFirst()
-                .orElseThrow();
+        var subset = findSubsetBySum(inputs, 2, 2020);
 
-        return match.stream().reduce(1, (x, y) -> x * y);
+        return subset.stream().reduce(1, Math::multiplyExact);
+    }
+
+    private Set<Integer> findSubsetBySum(Set<Integer> set, int setSize, int sumTo) {
+       return Sets.combinations(set, setSize)
+               .stream()
+               .filter(subset -> subset.stream().mapToInt(Integer::intValue).sum() == sumTo)
+               .findFirst()
+               .orElseThrow();
     }
 }
