@@ -69,9 +69,9 @@ public class Day2 {
             var password = matcher.group("password");
 
             if (password.charAt(min) == character) {
-               return !(password.charAt(max) == character);
+                return !(password.charAt(max) == character);
             } else if (password.charAt(max) == character) {
-               return !(password.charAt(min) == character);
+                return !(password.charAt(min) == character);
             } else {
                 return false;
             }
