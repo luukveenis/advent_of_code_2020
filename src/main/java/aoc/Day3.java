@@ -47,9 +47,9 @@ public class Day3 {
         int treeCounter = 0;
 
         for (; currentY <= gridHeight - 1; currentX += right, currentY += down) {
-           if (grid.get(currentY % gridHeight).get(currentX % gridWidth) == TREE) {
-               treeCounter++;
-           }
+            if (grid.get(currentY % gridHeight).get(currentX % gridWidth) == TREE) {
+                treeCounter++;
+            }
         }
 
         return treeCounter;
@@ -57,9 +57,9 @@ public class Day3 {
 
     private List<List<Character>> getGrid() {
         try (Stream<String> lines = Files.lines(input.toPath())) {
-           return lines
-                   .map(line -> Chars.asList(line.toCharArray()))
-                   .collect(Collectors.toList());
+            return lines
+                    .map(line -> Chars.asList(line.toCharArray()))
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Could not read input file");
