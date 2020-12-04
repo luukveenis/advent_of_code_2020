@@ -4,8 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.math.BigInteger;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day3Test {
     private Day3 day3;
@@ -24,5 +25,10 @@ class Day3Test {
     @Test
     public void part1_withTestInput_encountersSevenTrees() {
         assertEquals(7, day3.part1(), "Solution was incorrect");
+    }
+
+    @Test
+    public void part2_withTestInput_returnsExpectedValue() {
+        assertEquals(BigInteger.valueOf(336), day3.part2(), "Solution was incorrect");
     }
 }

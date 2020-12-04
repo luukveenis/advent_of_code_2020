@@ -4,6 +4,7 @@ import com.google.common.primitives.Chars;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,22 @@ public class Day3 {
 
     public int part1() {
         return traverse(3, 1);
+    }
+
+    public BigInteger part2() {
+        var slopes = List.of(
+                List.of(1, 1),
+                List.of(3, 1),
+                List.of(5, 1),
+                List.of(7, 1),
+                List.of(1, 2)
+        );
+
+        return slopes
+                .stream()
+                .map(slope -> traverse(slope.get(0), slope.get(1)))
+                .map(BigInteger::valueOf)
+                .reduce(BigInteger.ONE, BigInteger::multiply);
     }
 
     private int traverse(int right, int down) {
