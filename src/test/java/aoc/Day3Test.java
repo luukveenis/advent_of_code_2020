@@ -22,7 +22,7 @@ class Day3Test {
     }
 
     @Test
-    public void part1_notImplemented_returnsNegativeOne() {
-        assertEquals(-1, day3.part1(), "Solution was incorrect");
+    public void part1_withTestInput_encountersSevenTrees() {
+        assertEquals(7, day3.part1(), "Solution was incorrect");
     }
 }
