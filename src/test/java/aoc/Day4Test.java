@@ -22,7 +22,7 @@ class Day4Test {
     }
 
     @Test
-    public void part1_withTestInput_returnsFakeValue() {
-        assertEquals(2, day4.part1(), "Solution was incorrect");
+    public void part1_withTestInput_hasTwoValidPassports() {
+        assertEquals(2 , day4.part1(), "Solution was incorrect");
     }
 }

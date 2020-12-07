@@ -22,5 +22,11 @@ public class Runner {
 
         System.out.println("Day 3, part 1: " + day3.part1());
         System.out.println("Day 3, part 2: " + day3.part2());
+
+        var day4input = new File(Runner.class.getClassLoader().getResource("day4.txt").getFile());
+        var day4 = new Day4(day4input);
+
+        System.out.println("Day 4, part 1: " + day4.part1());
+        // System.out.println("Day 4, part 2: " + day4.part2());
     }
 }
