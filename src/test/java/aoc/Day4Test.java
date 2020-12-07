@@ -23,6 +23,6 @@ class Day4Test {
 
     @Test
     public void part1_withTestInput_returnsFakeValue() {
-        assertEquals(-1, day4.part1(), "Solution was incorrect");
+        assertEquals(2, day4.part1(), "Solution was incorrect");
     }
 }
