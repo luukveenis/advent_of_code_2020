@@ -22,8 +22,8 @@ class Day5Test {
     }
 
     @Test
-    public void part1_withTestInput_returnsFakeValue() {
-        assertEquals(-1, day5.part1(), "Solution was incorrect");
+    public void part1_withTestInput_findsHighestSeatId() {
+        assertEquals(820, day5.part1(), "Solution was incorrect");
     }
 
     @Test
