@@ -27,6 +27,6 @@ public class Runner {
         var day4 = new Day4(day4input);
 
         System.out.println("Day 4, part 1: " + day4.part1());
-        // System.out.println("Day 4, part 2: " + day4.part2());
+        System.out.println("Day 4, part 2: " + day4.part2());
     }
 }

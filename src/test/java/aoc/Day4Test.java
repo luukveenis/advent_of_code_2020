@@ -25,4 +25,9 @@ class Day4Test {
     public void part1_withTestInput_hasTwoValidPassports() {
         assertEquals(2 , day4.part1(), "Solution was incorrect");
     }
+
+    @Test
+    public void part2_withTestInput_hasTwoValidPassports() {
+        assertEquals(2 , day4.part2(), "Solution was incorrect");
+    }
 }
