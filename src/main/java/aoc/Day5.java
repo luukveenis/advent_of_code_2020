@@ -24,7 +24,22 @@ public class Day5 {
     }
 
     public long part2() {
-        return -1;
+        var seatIds = getBoardingPasses()
+                .stream()
+                .map(this::getSeatId)
+                .sorted()
+                .collect(Collectors.toList());
+
+        /* Seat IDs are an arithmetic sequence. We can get the missing seat ID by
+           calculating the sum of the sequence, then subtracting off all the seat
+           IDs that we know to leave the missing one. This relies on the guarantee
+           from the problem statement that the seat isn't the first or last.
+         */
+        var lowestSeat = seatIds.get(0);
+        var highestSeat = seatIds.get(seatIds.size() - 1);
+        var sum = ((seatIds.size() + 1) * (lowestSeat + highestSeat)) / 2;
+
+        return seatIds.stream().reduce(sum, (result, seatId) -> result - seatId);
     }
 
     private int getSeatId(String boardingPass) {
