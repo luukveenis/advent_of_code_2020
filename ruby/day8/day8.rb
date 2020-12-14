@@ -33,6 +33,32 @@ class Computer
     end
   end
 
+  def repair_and_run
+    (0..program.size - 1).each do |instruction_number|
+      original_instruction = program[instruction_number]
+      command, value = original_instruction.split
+
+      begin
+        case command
+        when "nop"
+          program[instruction_number] = ["jmp", value].join(" ")
+          run
+        when "jmp"
+          program[instruction_number] = ["nop", value].join(" ")
+          run
+        when "acc"
+          next
+        end
+      rescue InfiniteLoopError
+        program[instruction_number] = original_instruction
+        @pointer = 0
+        @accumulator = 0
+        @previous_instructions = []
+        next
+      end
+    end
+  end
+
   private
 
   attr_reader :program
@@ -58,3 +84,7 @@ program = File.readlines(ARGV[0], chomp: true)
 computer = Computer.new(program)
 computer.safe_run
 puts "Part 1: " + computer.accumulator.to_s
+
+computer = Computer.new(program)
+computer.repair_and_run
+puts "Part 2: " + computer.accumulator.to_s
